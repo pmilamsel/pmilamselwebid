@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PMI Kab. Lampung Selatan</title>
+<!-- Favicon telah ditambahkan di sini -->
+<link href="https://ik.imagekit.io/16sy68ze3/logo%20tambahan%20komposisi%20horisontal.jpg?updatedAt=1752809331863" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #e92933;
+        --background-color: #f9f9f9;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --accent-color: #f2f2f2;
+        --input-border: #ccc;
+        --input-focus: #e92933;
+        --button-hover: #c7222a;
+      }
+      body {
+        font-family: 'Public Sans', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-primary);
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-white py-2 px-4 rounded-md hover:bg-[var(--button-hover)] transition duration-200;
+      }
+      .button_secondary {
+        @apply bg-[var(--accent-color)] text-[var(--text-primary)] py-2 px-4 rounded-md hover:bg-gray-200 transition duration-200;
+      }
+      .input {
+        @apply bg-white border border-[var(--input-border)] rounded-md py-2 px-3 focus:outline-none focus:border-[var(--input-focus)];
+      }
+      .textarea {
+        @apply bg-white border border-[var(--input-border)] rounded-md py-2 px-3 focus:outline-none focus:border-[var(--input-focus)] h-32;
+      }
+      .typography_h1 {
+        @apply text-3xl font-bold text-[var(--text-primary)] mb-4;
+      }
+      .typography_h2 {
+        @apply text-2xl font-semibold text-[var(--text-primary)] mb-3;
+      }
+      .typography_body {
+        @apply text-base text-[var(--text-secondary)];
+      }
+      .card {
+        @apply bg-white rounded-md shadow-md p-6;
+      }
+      .form_group {
+        @apply mb-4;
+      }
+      .label {
+        @apply block text-[var(--text-secondary)] text-sm font-bold mb-2;
+      }
+      .form_title {
+        @apply text-2xl font-bold text-[var(--text-primary)] mb-6;
+      }
+      .form_description {
+        @apply text-base text-[var(--text-secondary)] mb-4;
+      }
+
+      /* Custom CSS untuk animasi tulisan berjalan */
+        @keyframes marquee {
+            0% { transform: translateX(100%); } /* Mulai dari luar kanan */
+            100% { transform: translateX(-100%); } /* Berakhir di luar kiri */
+        }
+
+        .marquee-container {
+            overflow: hidden; /* Sembunyikan teks di luar container */
+            white-space: nowrap; /* Pastikan teks tetap dalam satu baris */
+            box-sizing: border-box; /* Sertakan padding dan border dalam lebar total */
+        }
+
+        .marquee-text {
+            display: inline-block; /* Agar bisa dianimasikan secara horizontal */
+            padding-left: 100%; /* Memulai teks dari luar kanan */
+            animation: marquee 60s linear infinite; /* Animasi berulang, durasi diperlambat menjadi 25 detik */
+        }
+
+        /* Pastikan font Inter digunakan jika tidak ada font lain yang ditentukan */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* CSS untuk modal pesan */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+<div class="container mx-auto px-4">
+    <div class="flex items-center justify-between whitespace-nowrap py-3">
+        <div class="flex items-center gap-3 text-text-primary">
+        <img alt="PMI Logo" class="h-10" src="https://ik.imagekit.io/16sy68ze3/logo%20PMI%20LAMPUNG%20SELATAN.png?updatedAt=1752811555208"/>
+        </div>
+    <nav class="hidden md:flex items-center gap-8">
+        <a class="text-text-secondary hover:text-primary-color transition duration-200" href="#">Beranda</a>
+        <a class="text-text-secondary hover:text-primary-color transition duration-200" href="#">Layanan Kami</a>
+        <a class="text-text-secondary hover:text-primary-color transition duration-200" href="#">Tentang Kami</a>
+        <a class="text-text-secondary hover:text-primary-color transition duration-200" href="#">Stok Darah</a>
+        <a class="button_primary" href="#">Ayo Donasi</a>
+    </nav>
+    <button class="md:hidden button_secondary">Menu</button>
+    </div>
+</div>
+</header>
+
+<!-- Bagian teks berjalan sekarang akan tetap di layar saat digulir -->
+<!-- Menggunakan 'fixed' untuk memastikan selalu terlihat, dan 'top-[64px]' untuk menempatkannya tepat di bawah header -->
+<div class="bg-red-600 text-white py-1 rounded-lg shadow-lg marquee-container fixed top-[64px] left-0 w-full z-40">
+    <!-- Teks yang akan berjalan. Duplikasi teks untuk efek looping yang lebih baik. -->
+    <p class="text-lg font-semibold marquee-text" id="donor-marquee-text">
+        <!-- Data donor akan dimuat di sini dari Google Sheets -->
+        Memuat data donasi...
+    </p>
+</div>
+
+<!-- Main content sekarang memiliki padding-top untuk mencegah tumpang tindih dengan header dan marquee fixed -->
+<main class="container mx-auto px-4 pb-8 pt-[106px]">
+    <div class="space-y-8">
+        <!-- Bagian ini telah diubah menjadi slider gambar -->
+        <div class="relative rounded-lg overflow-hidden shadow-lg h-[400px]">
+            <div class="slider-wrapper relative w-full h-full">
+                <!-- Gambar Slide -->
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="https://ik.imagekit.io/16sy68ze3/312942133_1532162690584200_4094017710525749575_n.jpg?updatedAt=1752811789134" alt="Kegiatan PMI"/>
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?updatedAt=1752811763647" alt="Kegiatan Donor Darah"/>
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?updatedAt=1752811821839" alt="Relawan PMI"/>
+
+                <!-- Overlay Teks -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-start p-6">
+                    <h2 class="text-white text-4xl font-bold text-left w-full">Membantu Sesama, Menyelamatkan Kehidupan</h2>
+                </div>
+
+                <!-- Tombol Navigasi (Prev/Next) -->
+                <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/70 text-black p-2 rounded-full z-10 transition-colors duration-200 focus:outline-none">
+                    &#10094;
+                </button>
+                <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/70 text-black p-2 rounded-full z-10 transition-colors duration-200 focus:outline-none">
+                    &#10095;
+                </button>
+
+                <!-- Indikator Titik Navigasi -->
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="slider-dots">
+                    <div class="size-3 rounded-full bg-white cursor-pointer dot active-dot"></div>
+                    <div class="size-3 rounded-full bg-white/50 cursor-pointer dot"></div>
+                    <div class="size-3 rounded-full bg-white/50 cursor-pointer dot"></div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <h2 class="typography_h2">Stok Darah &amp; Agenda Kegiatan</h2>
+            <div class="card grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-semibold text-lg mb-3 text-text-primary">Stok Darah Saat Ini</h3>
+                    <h5 id="blood-stock-update-date">Update: Memuat...</h5>
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-input-border">
+                                <th class="py-3 px-4 text-left text-sm font-bold text-text-secondary">Golongan Darah</th>
+                                <th class="py-3 px-4 text-left text-sm font-bold text-text-secondary">WB</th>
+                                <th class="py-3 px-4 text-left text-sm font-bold text-text-secondary">PRC</th>
+                                <th class="py-3 px-4 text-left text-sm font-bold text-text-secondary">Jumlah (Kantong)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blood-stock-table-body">
+                            <!-- Data stok darah akan dimuat di sini dari Google Sheets -->
+                            <tr><td colspan="4" class="py-3 px-4 typography_body text-center">Memuat data stok darah...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-3 text-text-primary">Agenda PMI</h3>
+                    <ul class="space-y-3" id="agenda-list">
+                        <!-- Data agenda akan dimuat di sini dari Google Sheets -->
+                        <li class="typography_body text-center">Memuat data agenda...</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="typography_h2">Galeri Kegiatan</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <img alt="Galeri 1" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?updatedAt=1752811763647"/>
+                <img alt="Galeri 2" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20190222-WA0024.jpg?updatedAt=1752811919835"/>
+                <img alt="Galeri 3" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?updatedAt=1752811821839"/>
+                <img alt="Galeri 4" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/287769676_1435475610252909_2826618118035696728_n.jpg?updatedAt=1752811863163"/>
+                <img alt="Galeri 5" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0012-864x380.jpg?updatedAt=1752811763647"/>
+                <img alt="Galeri 6" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/323107815_538949468167626_4435208639495404917_n.jpg?updatedAt=1752811763695"/>
+            </div>
+        </section>
+
+        <!--Ini Bagian Form Pendaftaran Relawan dan Donor darah-->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="card">
+                <h3 class="form_title">Jadi Relawan</h3>
+                <p class="form_description">Bergabunglah bersama kami untuk membantu sesama.</p>
+                <form id="volunteer-form">
+                    <div class="form_group">
+                        <label class="label" for="volunteer-name">Nama Lengkap</label>
+                        <input class="input w-full" id="volunteer-name" placeholder="Nama Lengkap" required="" type="text"/>
+                    </div>
+                    <div class="form_group">
+                        <label class="label" for="volunteer-phone">No. WA/HP (Wajib)</label>
+                        <input class="input w-full" id="volunteer-phone" placeholder="Contoh: 08123456789" required="" type="tel"/>
+                    </div>
+                    <div class="form_group">
+                        <label class="label" for="volunteer-email">Email (Opsional)</label>
+                        <input class="input w-full" id="volunteer-email" placeholder="email@anda.com" type="email"/>
+                    </div>
+                    <button class="button_primary w-full" type="submit" id="volunteer-submit-btn">Daftar Jadi Relawan</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3 class="form_title">Donor Darah</h3>
+                <p class="form_description">Darah Anda, nyawa bagi sesama.</p>
+                <form id="donor-form">
+                    <div class="form_group">
+                        <label class="label" for="donor-name">Nama Lengkap</label>
+                        <input class="input w-full" id="donor-name" placeholder="Nama Lengkap" required="" type="text"/>
+                    </div>
+                    <div class="form_group">
+                        <label class="label" for="donor-bloodtype">Golongan Darah</label>
+                        <select class="input w-full" id="donor-bloodtype" required="">
+                            <option value="">Pilih Golongan Darah</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+                    <div class="form_group">
+                        <label class="label" for="donor-phone">No. WA/HP (Wajib)</label>
+                        <input class="input w-full" id="donor-phone" placeholder="Contoh: 08123456789" required="" type="tel"/>
+                    </div>
+                    <button class="button_primary w-full" type="submit" id="donor-submit-btn">Daftar Donor Darah</button>
+                </form>
+            </div>
+        </section>
+
+        <!--Bagian Berita PMI Terbaru-->
+        <section>
+            <h2 class="typography_h2">Berita Terbaru</h2>
+            <div class="space-y-6" id="news-list">
+                <!-- Data berita akan dimuat di sini dari Google Sheets -->
+                <div class="card flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <p class="typography_body text-center">Memuat berita terbaru...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--Bagian Form Keluhan/ Saran - Tetap di luar div space-y-8 karena memiliki margin top yang berbeda -->
+    <section class="mt-12 card">
+        <h2 class="form_title text-center">Kontak Saran-Keluhan</h2>
+        <form class="max-w-lg mx-auto" id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="form_group">
+                    <label class="label" for="contact-name">Nama</label>
+                    <input class="input w-full" id="contact-name" placeholder="Nama Anda" type="text"/>
+                </div>
+                <div class="form_group">
+                    <label class="label" for="contact-email">Email</label>
+                    <input class="input w-full" id="contact-email" placeholder="email@anda.com" type="email"/>
+                </div>
+            </div>
+            <div class="form_group">
+                <label class="label" for="contact-message">Pesan</label>
+                <textarea class="textarea w-full" id="contact-message" placeholder="Tuliskan pesan Anda di sini..."></textarea>
+            </div>
+            <div class="text-center">
+                <button class="button_primary" type="submit" id="contact-submit-btn">Kirim Pesan</button>
+            </div>
+        </form>
+    </section>
+</main>
+<footer class="bg-accent-color mt-12 py-8">
+    <div class="container mx-auto px-4 text-center text-text-secondary">
+    <div class="flex flex-wrap items-center justify-center gap-6 mb-4">
+        <a class="hover:text-primary-color transition duration-200" href="#">Kontak</a>
+        <a class="hover:text-primary-color transition duration-200" href="#">Alamat</a>
+        <a class="hover:text-primary-color transition duration-200" href="#">Pengajuan Kemitraan</a>
+    </div>
+    <p>© 2025 PMI Kabupaten Lampung Selatan. Created by Bid. ORG dan PSD.</p>
+    </div>
+</footer>
+</div>
+
+<!-- Modal untuk pesan sukses/error -->
+<div id="message-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-modal-btn">&times;</span>
+        <p id="modal-message"></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Bagian JavaScript yang sudah ada untuk Slider Gambar ---
+        const slides = document.querySelectorAll('.slider-image');
+        const dotsContainer = document.getElementById('slider-dots');
+        const dots = [];
+        const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+        let currentSlide = 0;
+        let slideInterval;
+
+        if (dotsContainer.children.length === 0) {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('size-3', 'rounded-full', 'bg-white/50', 'cursor-pointer', 'dot');
+                if (index === 0) {
+                    dot.classList.add('active-dot', 'bg-white');
+                }
+                dot.addEventListener('click', () => showSlide(index));
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            });
+        } else {
+            Array.from(dotsContainer.children).forEach(dot => dots.push(dot));
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+        }
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active-dot', 'bg-white');
+                    dot.classList.remove('bg-white/50');
+                } else {
+                    dot.classList.remove('active-dot', 'bg-white');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        prevButton.addEventListener('click', () => {
+            stopSlideShow();
+            prevSlide();
+            startSlideShow();
+        });
+
+        nextButton.addEventListener('click', () => {
+            stopSlideShow();
+            nextSlide();
+            startSlideShow();
+        });
+
+        showSlide(currentSlide);
+        startSlideShow();
+
+        // --- Bagian JavaScript Baru untuk Integrasi Google Sheets ---
+
+        // PENTING: Ganti dengan URL aplikasi web Google Apps Script Anda yang sudah di-deploy.
+        // Contoh: 'https://script.google.com/macros/s/AKfycbz_YOUR_SCRIPT_ID_HERE/exec'
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec'; // Placeholder URL yang valid
+
+        // Referensi elemen DOM untuk menampilkan data
+        const donorMarqueeText = document.getElementById('donor-marquee-text');
+        const bloodStockTableBody = document.getElementById('blood-stock-table-body');
+        const bloodStockUpdateDate = document.getElementById('blood-stock-update-date');
+        const agendaList = document.getElementById('agenda-list');
+        const newsList = document.getElementById('news-list');
+
+        // Referensi elemen DOM untuk formulir
+        const volunteerForm = document.getElementById('volunteer-form');
+        const donorForm = document.getElementById('donor-form');
+        const contactForm = document.getElementById('contact-form');
+
+        const volunteerSubmitBtn = document.getElementById('volunteer-submit-btn');
+        const donorSubmitBtn = document.getElementById('donor-submit-btn');
+        const contactSubmitBtn = document.getElementById('contact-submit-btn');
+
+        // Referensi elemen DOM untuk modal pesan
+        const messageModal = document.getElementById('message-modal');
+        const modalMessage = document.getElementById('modal-message');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        // Fungsi untuk menampilkan modal pesan
+        function showMessageModal(message) {
+            modalMessage.textContent = message;
+            messageModal.style.display = 'flex'; // Menggunakan flex untuk centering
+        }
+
+        // Fungsi untuk menyembunyikan modal pesan
+        closeModalBtn.addEventListener('click', () => {
+            messageModal.style.display = 'none';
+        });
+
+        // Sembunyikan modal jika di-klik di luar area konten
+        window.addEventListener('click', (event) => {
+            if (event.target === messageModal) {
+                messageModal.style.display = 'none';
+            }
+        });
+
+        // Fungsi untuk mengambil data dari Google Apps Script
+        async function fetchData() {
+            try {
+                // Pastikan GOOGLE_APPS_SCRIPT_URL telah diganti dengan URL yang valid
+                if (GOOGLE_APPS_SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') || GOOGLE_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec') {
+                    console.error('Error: GOOGLE_APPS_SCRIPT_URL belum diganti dengan URL aplikasi web Google Apps Script Anda yang sebenarnya.');
+                    showMessageModal('Error: URL Google Apps Script belum dikonfigurasi. Silakan periksa kode.');
+                    return; // Hentikan eksekusi jika URL belum diganti
+                }
+
+                const response = await fetch(`${GOOGLE_APPS_SCRIPT_URL}?action=getData`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Data fetched:', data); // Untuk debugging
+
+                // Perbarui Teks Berjalan (Marquee)
+                if (data.donors && data.donors.length > 0) {
+                    const donorText = data.donors.map(d => `Terima kasih kepada ${d.Nama}, berdonasi sebesar Rp.${d.Jumlah}.`).join(' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ');
+                    donorMarqueeText.textContent = donorText;
+                } else {
+                    donorMarqueeText.textContent = 'Belum ada data donasi terbaru.';
+                }
+
+                // Perbarui Stok Darah
+                if (data.bloodStock && data.bloodStock.length > 0) {
+                    bloodStockTableBody.innerHTML = ''; // Kosongkan tabel
+                    data.bloodStock.forEach((row, index) => {
+                        const tr = document.createElement('tr');
+                        tr.classList.add(index % 2 === 1 ? 'bg-accent-color' : ''); // Warna selang-seling
+                        tr.innerHTML = `
+                            <td class="py-3 px-4 typography_body">${row.GolonganDarah}</td>
+                            <td class="py-3 px-4 typography_body">${row.WB}</td>
+                            <td class="py-3 px-4 typography_body">${row.PRC}</td>
+                            <td class="py-3 px-4 typography_body">${row.JumlahKantong}</td>
+                        `;
+                        bloodStockTableBody.appendChild(tr);
+                    });
+                    // Asumsi tanggal update ada di data atau bisa diambil dari data terbaru
+                    if (data.bloodStockUpdateDate) {
+                        bloodStockUpdateDate.textContent = `Update: ${data.bloodStockUpdateDate}`;
+                    } else {
+                        // Jika tidak ada tanggal update, gunakan tanggal saat ini
+                        const today = new Date();
+                        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                        bloodStockUpdateDate.textContent = `Update: ${today.toLocaleDateString('id-ID', options)}`;
+                    }
+                } else {
+                    bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Tidak ada data stok darah.</td></tr>';
+                    bloodStockUpdateDate.textContent = 'Update: Data tidak tersedia';
+                }
+
+                // Perbarui Agenda PMI
+                if (data.agenda && data.agenda.length > 0) {
+                    agendaList.innerHTML = ''; // Kosongkan daftar
+                    data.agenda.forEach(item => {
+                        const li = document.createElement('li');
+                        li.classList.add('typography_body');
+                        li.innerHTML = `<strong>${item.Tanggal}:</strong> ${item.Kegiatan}`;
+                        agendaList.appendChild(li);
+                    });
+                } else {
+                    agendaList.innerHTML = '<li class="typography_body text-center">Tidak ada agenda kegiatan.</li>';
+                }
+
+                // Perbarui Berita Terbaru
+                if (data.news && data.news.length > 0) {
+                    newsList.innerHTML = ''; // Kosongkan daftar
+                    data.news.forEach(item => {
+                        const newsCard = document.createElement('div');
+                        newsCard.classList.add('card', 'flex', 'flex-col', 'md:flex-row', 'gap-6', 'items-center');
+                        newsCard.innerHTML = `
+                            <img alt="${item.Judul}" class="w-full md:w-1/3 h-auto rounded-lg" src="${item.Gambar || 'https://placehold.co/300x200/cccccc/333333?text=No+Image'}"/>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-lg mb-2 text-text-primary">${item.Judul}</h3>
+                                <p class="typography_body">${item.Deskripsi}</p>
+                            </div>
+                        `;
+                        newsList.appendChild(newsCard);
+                    });
+                } else {
+                    newsList.innerHTML = `
+                        <div class="card flex flex-col md:flex-row gap-6 items-center">
+                            <div class="flex-1">
+                                <p class="typography_body text-center">Tidak ada berita terbaru.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // Tampilkan pesan error di UI jika perlu
+                donorMarqueeText.textContent = 'Gagal memuat data donasi.';
+                bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Gagal memuat data stok darah.</td></tr>';
+                bloodStockUpdateDate.textContent = 'Update: Gagal memuat';
+                agendaList.innerHTML = '<li class="typography_body text-center">Gagal memuat data agenda.</li>';
+                newsList.innerHTML = `
+                    <div class="card flex flex-col md:flex-row gap-6 items-center">
+                        <div class="flex-1">
+                            <p class="typography_body text-center">Gagal memuat berita terbaru.</p>
+                        </div>
+                    </div>
+                `;
+                showMessageModal('Gagal memuat data dari server. Silakan coba lagi nanti.');
+            }
+        }
+
+        // Fungsi untuk mengirim data formulir
+        async function submitForm(formType, formData, submitButton) {
+            submitButton.disabled = true;
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Mengirim...';
+
+            try {
+                // Pastikan GOOGLE_APPS_SCRIPT_URL telah diganti dengan URL yang valid
+                if (GOOGLE_APPS_SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') || GOOGLE_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec') {
+                    console.error('Error: GOOGLE_APPS_SCRIPT_URL belum diganti dengan URL aplikasi web Google Apps Script Anda yang sebenarnya.');
+                    showMessageModal('Error: URL Google Apps Script belum dikonfigurasi. Silakan periksa kode.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    return; // Hentikan eksekusi jika URL belum diganti
+                }
+
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Penting untuk Apps Script doPost
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        action: 'submitForm',
+                        formType: formType,
+                        ...formData
+                    }).toString()
+                });
+
+                // Karena mode 'no-cors', response.ok akan selalu true.
+                // Kita harus mengandalkan Apps Script untuk memberikan feedback sukses/gagal
+                // melalui mekanisme lain jika diperlukan, atau asumsikan sukses jika tidak ada error jaringan.
+                // Untuk demo ini, kita asumsikan sukses jika tidak ada error fetch.
+
+                showMessageModal('Data berhasil dikirim! Terima kasih.');
+                // Reset form setelah berhasil
+                if (formType === 'volunteer') volunteerForm.reset();
+                if (formType === 'donor') donorForm.reset();
+                if (formType === 'contact') contactForm.reset();
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessageModal('Gagal mengirim data. Silakan coba lagi.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+
+        // Event listener untuk formulir Relawan
+        volunteerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = {
+                NamaLengkap: document.getElementById('volunteer-name').value,
+                NoWAHP: document.getElementById('volunteer-phone').value,
+                Email: document.getElementById('volunteer-email').value
+            };
+            submitForm('volunteer', formData, volunteerSubmitBtn);
+        });
+
+        // Event listener untuk formulir Donor Darah
+        donorForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = {
+                NamaLengkap: document.getElementById('donor-name').value,
+                GolonganDarah: document.getElementById('donor-bloodtype').value,
+                NoWAHP: document.getElementById('donor-phone').value
+            };
+            submitForm('donor', formData, donorSubmitBtn);
+        });
+
+        // Event listener untuk formulir Kontak Saran-Keluhan
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = {
+                Nama: document.getElementById('contact-name').value,
+                Email: document.getElementById('contact-email').value,
+                Pesan: document.getElementById('contact-message').value
+            };
+            submitForm('contact', formData, contactSubmitBtn);
+        });
+
+        // Panggil fungsi fetchData saat halaman dimuat
+        fetchData();
+    });
+</script>
+</body>
+</html>
