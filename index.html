@@ -429,7 +429,7 @@
 
         // PENTING: Ganti dengan URL aplikasi web Google Apps Script Anda yang sudah di-deploy.
         // Contoh: 'https://script.google.com/macros/s/AKfycbz_YOUR_SCRIPT_ID_HERE/exec'
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec'; // Placeholder URL yang valid
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec';
 
         // Referensi elemen DOM untuk menampilkan data
         const donorMarqueeText = document.getElementById('donor-marquee-text');
@@ -473,13 +473,6 @@
         // Fungsi untuk mengambil data dari Google Apps Script
         async function fetchData() {
             try {
-                // Pastikan GOOGLE_APPS_SCRIPT_URL telah diganti dengan URL yang valid
-                if (GOOGLE_APPS_SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') || GOOGLE_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec') {
-                    console.error('Error: GOOGLE_APPS_SCRIPT_URL belum diganti dengan URL aplikasi web Google Apps Script Anda yang sebenarnya.');
-                    showMessageModal('Error: URL Google Apps Script belum dikonfigurasi. Silakan periksa kode.');
-                    return; // Hentikan eksekusi jika URL belum diganti
-                }
-
                 const response = await fetch(`${GOOGLE_APPS_SCRIPT_URL}?action=getData`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -586,15 +579,6 @@
             submitButton.textContent = 'Mengirim...';
 
             try {
-                // Pastikan GOOGLE_APPS_SCRIPT_URL telah diganti dengan URL yang valid
-                if (GOOGLE_APPS_SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') || GOOGLE_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwneYasiuB0y2V0LtNnSpFRCB062ka9JwasiO699W8lBYbCPIeopce8jZNSwFeF0dsjHA/exec') {
-                    console.error('Error: GOOGLE_APPS_SCRIPT_URL belum diganti dengan URL aplikasi web Google Apps Script Anda yang sebenarnya.');
-                    showMessageModal('Error: URL Google Apps Script belum dikonfigurasi. Silakan periksa kode.');
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                    return; // Hentikan eksekusi jika URL belum diganti
-                }
-
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors', // Penting untuk Apps Script doPost
