@@ -167,9 +167,9 @@
         <div class="relative rounded-lg overflow-hidden shadow-lg h-[400px]">
             <div class="slider-wrapper relative w-full h-full">
                 <!-- Gambar Slide -->
-                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="https://ik.imagekit.io/16sy68ze3/312942133_1532162690584200_4094017710525749575_n.jpg?updatedAt=1752811789134" alt="Kegiatan PMI"/>
-                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?updatedAt=1752811763647" alt="Kegiatan Donor Darah"/>
-                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?updatedAt=1752811821839" alt="Relawan PMI"/>
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="https://ik.imagekit.io/16sy68ze3/312942133_1532162690584200_4094017710525749575_n.jpg?Updated at=1752811789134" alt="Kegiatan PMI"/>
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?Updated at=1752811763647" alt="Kegiatan Donor Darah"/>
+                <img class="slider-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?Updated at=1752811821839" alt="Relawan PMI"/>
 
                 <!-- Overlay Teks -->
                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-start p-6">
@@ -225,12 +225,12 @@
         <section>
             <h2 class="typography_h2">Galeri Kegiatan</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <img alt="Galeri 1" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?updatedAt=1752811763647"/>
-                <img alt="Galeri 2" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20190222-WA0024.jpg?updatedAt=1752811919835"/>
-                <img alt="Galeri 3" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?updatedAt=1752811821839"/>
-                <img alt="Galeri 4" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/287769676_1435475610252909_2826618118035696728_n.jpg?updatedAt=1752811863163"/>
-                <img alt="Galeri 5" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0012-864x380.jpg?updatedAt=1752811763647"/>
-                <img alt="Galeri 6" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/323107815_538949468167626_4435208639495404917_n.jpg?updatedAt=1752811763695"/>
+                <img alt="Galeri 1" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0010-1024x683.jpg?Updated at=1752811763647"/>
+                <img alt="Galeri 2" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20190222-WA0024.jpg?Updated at=1752811919835"/>
+                <img alt="Galeri 3" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/300157156_1480417732425363_1766454877430901179_n.jpg?Updated at=1752811821839"/>
+                <img alt="Galeri 4" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/287769676_1435475610252909_2826618118035696728_n.jpg?Updated at=1752811863163"/>
+                <img alt="Galeri 5" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/IMG-20221230-WA0012-864x380.jpg?Updated at=1752811763647"/>
+                <img alt="Galeri 6" class="w-full h-auto rounded-lg shadow-md" src="https://ik.imagekit.io/16sy68ze3/323107815_538949468167626_4435208639495404917_n.jpg?Updated at=1752811763695"/>
             </div>
         </section>
 
@@ -470,7 +470,7 @@
             }
         });
 
-        // Fungsi untuk mengambil data dari Google Apps Script
+        // Fungsi untuk mengambil data dari Google Apps Script (selain stok darah)
         async function fetchData() {
             try {
                 const response = await fetch(`${GOOGLE_APPS_SCRIPT_URL}?action=getData`);
@@ -478,7 +478,7 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log('Data fetched:', data); // Untuk debugging
+                console.log('Data fetched (non-blood stock):', data); // Untuk debugging
 
                 // Perbarui Teks Berjalan (Marquee)
                 if (data.donors && data.donors.length > 0) {
@@ -486,34 +486,6 @@
                     donorMarqueeText.textContent = donorText;
                 } else {
                     donorMarqueeText.textContent = 'Belum ada data donasi terbaru.';
-                }
-
-                // Perbarui Stok Darah
-                if (data.bloodStock && data.bloodStock.length > 0) {
-                    bloodStockTableBody.innerHTML = ''; // Kosongkan tabel
-                    data.bloodStock.forEach((row, index) => {
-                        const tr = document.createElement('tr');
-                        tr.classList.add(index % 2 === 1 ? 'bg-accent-color' : ''); // Warna selang-seling
-                        tr.innerHTML = `
-                            <td class="py-3 px-4 typography_body">${row.GolonganDarah}</td>
-                            <td class="py-3 px-4 typography_body">${row.WB}</td>
-                            <td class="py-3 px-4 typography_body">${row.PRC}</td>
-                            <td class="py-3 px-4 typography_body">${row.JumlahKantong}</td>
-                        `;
-                        bloodStockTableBody.appendChild(tr);
-                    });
-                    // Asumsi tanggal update ada di data atau bisa diambil dari data terbaru
-                    if (data.bloodStockUpdateDate) {
-                        bloodStockUpdateDate.textContent = `Update: ${data.bloodStockUpdateDate}`;
-                    } else {
-                        // Jika tidak ada tanggal update, gunakan tanggal saat ini
-                        const today = new Date();
-                        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                        bloodStockUpdateDate.textContent = `Update: ${today.toLocaleDateString('id-ID', options)}`;
-                    }
-                } else {
-                    bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Tidak ada data stok darah.</td></tr>';
-                    bloodStockUpdateDate.textContent = 'Update: Data tidak tersedia';
                 }
 
                 // Perbarui Agenda PMI
@@ -555,11 +527,8 @@
                 }
 
             } catch (error) {
-                console.error('Error fetching data:', error);
-                // Tampilkan pesan error di UI jika perlu
+                console.error('Error fetching data (non-blood stock):', error);
                 donorMarqueeText.textContent = 'Gagal memuat data donasi.';
-                bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Gagal memuat data stok darah.</td></tr>';
-                bloodStockUpdateDate.textContent = 'Update: Gagal memuat';
                 agendaList.innerHTML = '<li class="typography_body text-center">Gagal memuat data agenda.</li>';
                 newsList.innerHTML = `
                     <div class="card flex flex-col md:flex-row gap-6 items-center">
@@ -568,7 +537,51 @@
                         </div>
                     </div>
                 `;
-                showMessageModal('Gagal memuat data dari server. Silakan coba lagi nanti.');
+                showMessageModal('Gagal memuat data non-stok darah dari server. Silakan coba lagi nanti.');
+            }
+        }
+
+        // Fungsi untuk mengambil data stok darah dari Apps Script (yang memanggil API eksternal)
+        async function fetchBloodStock() {
+            try {
+                const response = await fetch(`${GOOGLE_APPS_SCRIPT_URL}?action=getBloodStockFromExternalAPI`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Data fetched (blood stock from external API):', data); // Untuk debugging
+
+                // Perbarui Stok Darah
+                if (data.bloodStock && data.bloodStock.length > 0) {
+                    bloodStockTableBody.innerHTML = ''; // Kosongkan tabel
+                    data.bloodStock.forEach((row, index) => {
+                        const tr = document.createElement('tr');
+                        tr.classList.add(index % 2 === 1 ? 'bg-accent-color' : ''); // Warna selang-seling
+                        tr.innerHTML = `
+                            <td class="py-3 px-4 typography_body">${row.GolonganDarah}</td>
+                            <td class="py-3 px-4 typography_body">${row.WB}</td>
+                            <td class="py-3 px-4 typography_body">${row.PRC}</td>
+                            <td class="py-3 px-4 typography_body">${row.JumlahKantong}</td>
+                        `;
+                        bloodStockTableBody.appendChild(tr);
+                    });
+                    if (data.bloodStockUpdateDate) {
+                        bloodStockUpdateDate.textContent = `Update: ${data.bloodStockUpdateDate}`;
+                    } else {
+                        const today = new Date();
+                        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                        bloodStockUpdateDate.textContent = `Update: ${today.toLocaleDateString('id-ID', options)}`;
+                    }
+                } else {
+                    bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Tidak ada data stok darah.</td></tr>';
+                    bloodStockUpdateDate.textContent = 'Update: Data tidak tersedia';
+                }
+
+            } catch (error) {
+                console.error('Error fetching blood stock:', error);
+                bloodStockTableBody.innerHTML = '<tr><td colspan="4" class="py-3 px-4 typography_body text-center">Gagal memuat data stok darah.</td></tr>';
+                bloodStockUpdateDate.textContent = 'Update: Gagal memuat';
+                showMessageModal('Gagal memuat data stok darah. Silakan coba lagi nanti.');
             }
         }
 
@@ -591,11 +604,6 @@
                         ...formData
                     }).toString()
                 });
-
-                // Karena mode 'no-cors', response.ok akan selalu true.
-                // Kita harus mengandalkan Apps Script untuk memberikan feedback sukses/gagal
-                // melalui mekanisme lain jika diperlukan, atau asumsikan sukses jika tidak ada error jaringan.
-                // Untuk demo ini, kita asumsikan sukses jika tidak ada error fetch.
 
                 showMessageModal('Data berhasil dikirim! Terima kasih.');
                 // Reset form setelah berhasil
@@ -645,8 +653,9 @@
             submitForm('contact', formData, contactSubmitBtn);
         });
 
-        // Panggil fungsi fetchData saat halaman dimuat
-        fetchData();
+        // Panggil fungsi fetchData dan fetchBloodStock saat halaman dimuat
+        fetchData(); // Untuk data non-stok darah
+        fetchBloodStock(); // Untuk data stok darah dari API eksternal
     });
 </script>
 </body>
